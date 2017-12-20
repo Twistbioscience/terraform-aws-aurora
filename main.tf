@@ -44,7 +44,7 @@ resource "aws_rds_cluster" "default" {
   preferred_maintenance_window    = "${var.preferred_maintenance_window}"
   port                            = "${var.port}"
   db_subnet_group_name            = "${aws_db_subnet_group.main.name}"
-  vpc_security_group_ids          = ["${var.security_groups}"]
+  vpc_security_group_ids          = ["${aws_security_group.main_db_access.id}"
   snapshot_identifier             = "${var.snapshot_identifier}"
   storage_encrypted               = "${var.storage_encrypted}"
   apply_immediately               = "${var.apply_immediately}"

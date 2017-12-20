@@ -19,11 +19,6 @@ variable "replica_count" {
   description = "Number of reader nodes to create"
 }
 
-variable "security_groups" {
-  type        = "list"
-  description = "VPC Security Group IDs"
-}
-
 variable "instance_type" {
   type        = "string"
   default     = ""
