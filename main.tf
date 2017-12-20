@@ -58,3 +58,35 @@ resource "random_id" "server" {
 
   byte_length = 8
 }
+
+# Security groups
+resource "aws_security_group" "main_db_access" {
+  count = "${var.create_rds}"
+  name = "${var.name}-access"
+  description = "Allow access to the database"
+  vpc_id = "${var.rds_vpc_id}"
+}
+
+resource "aws_security_group_rule" "allow_db_access" {
+    count = "${var.create_rds}"
+    type = "ingress"
+
+    from_port = "${var.port}"
+    to_port = "${var.port}"
+    protocol = "tcp"
+    cidr_blocks = ["${var.private_cidr}"]
+
+    security_group_id = "${aws_security_group.main_db_access.id}"
+}
+
+resource "aws_security_group_rule" "allow_all_outbound" {
+    count = "${var.create_rds}"
+    type = "egress"
+
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+
+    security_group_id = "${aws_security_group.main_db_access.id}"
+}

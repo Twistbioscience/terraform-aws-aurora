@@ -70,6 +70,16 @@ variable "port" {
   description = "The port on which to accept connections"
 }
 
+variable "rds_vpc_id" {
+    description = "VPC to connect to, used for a security group"
+    type = "string"
+}
+
+variable "private_cidr" {
+    description = "VPC private addressing, used for a security group"
+    type = "list"
+}
+
 variable "apply_immediately" {
   type        = "string"
   default     = "false"
