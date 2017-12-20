@@ -115,3 +115,8 @@ variable "skip_final_snapshot" {
   default     = "true"
   description = "Specifies whether to skip final snapshot"
 }
+
+variable "database_name" {
+  type        = "string"
+  description = "database name"
+}

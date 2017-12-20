@@ -52,6 +52,7 @@ resource "aws_rds_cluster" "default" {
   db_cluster_parameter_group_name = "${var.db_cluster_parameter_group_name}"
   engine                          = "${var.engine}"
   skip_final_snapshot             = "${var.skip_final_snapshot}"
+  database_name                   = "${var.database_name}"
 }
 
 # Security groups
