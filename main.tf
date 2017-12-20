@@ -30,8 +30,6 @@ resource "aws_rds_cluster_instance" "cluster_instance_n" {
   db_parameter_group_name      = "${var.db_parameter_group_name}"
   preferred_maintenance_window = "${var.preferred_maintenance_window}"
   apply_immediately            = "${var.apply_immediately}"
-  monitoring_role_arn          = "${join("", aws_iam_role.rds-enhanced-monitoring.*.arn)}"
-  monitoring_interval          = "${var.monitoring_interval}"
   auto_minor_version_upgrade   = "${var.auto_minor_version_upgrade}"
   promotion_tier               = "${count.index + 1}"
 }
