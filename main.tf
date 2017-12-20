@@ -17,6 +17,7 @@ resource "aws_rds_cluster_instance" "cluster_instance_0" {
   apply_immediately            = "${var.apply_immediately}"
   auto_minor_version_upgrade   = "${var.auto_minor_version_upgrade}"
   promotion_tier               = "0"
+  engine                       = "${var.engine}"
 }
 
 resource "aws_rds_cluster_instance" "cluster_instance_n" {
@@ -32,6 +33,7 @@ resource "aws_rds_cluster_instance" "cluster_instance_n" {
   apply_immediately            = "${var.apply_immediately}"
   auto_minor_version_upgrade   = "${var.auto_minor_version_upgrade}"
   promotion_tier               = "${count.index + 1}"
+  engine                       = "${var.engine}"
 }
 
 resource "aws_rds_cluster" "default" {
