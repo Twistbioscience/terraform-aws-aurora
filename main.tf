@@ -45,10 +45,11 @@ resource "aws_rds_cluster" "default" {
   port                            = "${var.port}"
   db_subnet_group_name            = "${aws_db_subnet_group.main.name}"
   vpc_security_group_ids          = ["${aws_security_group.main_db_access.id}"]
-  snapshot_identifier             = "${var.snapshot_identifier}"
   storage_encrypted               = "${var.storage_encrypted}"
   apply_immediately               = "${var.apply_immediately}"
   db_cluster_parameter_group_name = "${var.db_cluster_parameter_group_name}"
+  engine                          = "${var.engine}"
+  skip_final_snapshot             = "${var.skip_final_snapshot}"
 }
 
 # Security groups

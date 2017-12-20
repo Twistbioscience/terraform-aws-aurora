@@ -75,6 +75,11 @@ variable "private_cidr" {
     type = "list"
 }
 
+variable "engine" {
+    description = "aurora engine"
+    type = "string"
+}
+
 variable "apply_immediately" {
   type        = "string"
   default     = "false"
@@ -99,14 +104,14 @@ variable "db_cluster_parameter_group_name" {
   description = "The name of a DB Cluster parameter group to use"
 }
 
-variable "snapshot_identifier" {
-  type        = "string"
-  default     = ""
-  description = "DB snapshot to create this database from"
-}
-
 variable "storage_encrypted" {
   type        = "string"
   default     = "true"
   description = "Specifies whether the underlying storage layer should be encrypted"
+}
+
+variable "skip_final_snapshot" {
+  type        = "string"
+  default     = "true"
+  description = "Specifies whether to skip final snapshot"
 }
