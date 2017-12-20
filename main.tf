@@ -51,14 +51,6 @@ resource "aws_rds_cluster" "default" {
   db_cluster_parameter_group_name = "${var.db_cluster_parameter_group_name}"
 }
 
-resource "random_id" "server" {
-  keepers = {
-    id = "${aws_db_subnet_group.main.name}"
-  }
-
-  byte_length = 8
-}
-
 # Security groups
 resource "aws_security_group" "main_db_access" {
   count = "${var.create_rds}"
